@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.zadanierek.R
 import com.example.zadanierek.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
