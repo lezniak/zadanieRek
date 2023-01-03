@@ -7,5 +7,17 @@
     <fragment
         android:id="@+id/mainFragment2"
         android:name="com.example.zadanierek.ui.home.HomeFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment2_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.zadanierek.ui.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.example.zadanierek.infrastructure.model.User" />
+    </fragment>
 </navigation>
