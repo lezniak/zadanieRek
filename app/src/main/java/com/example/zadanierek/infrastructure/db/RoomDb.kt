@@ -7,22 +7,22 @@ import androidx.room.RoomDatabase
 import com.example.zadanierek.infrastructure.model.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
-abstract class database: RoomDatabase() {
+abstract class RoomDb: RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object{
         @Volatile
-        private var INSTANCE: database? = null
+        private var INSTANCE: RoomDb? = null
 
         @Synchronized
-        fun getInstance(context: Context): database{
+        fun getInstance(context: Context): RoomDb{
             synchronized(this){
                 var instance = INSTANCE
 
                 if(instance == null){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        database::class.java,
+                        RoomDb::class.java,
                         "database")
                         .build()
                 }

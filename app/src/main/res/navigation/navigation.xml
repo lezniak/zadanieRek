@@ -6,6 +6,6 @@
     app:startDestination="@id/mainFragment2">
     <fragment
         android:id="@+id/mainFragment2"
-        android:name="com.example.zadanierek.ui.main.MainFragment"
+        android:name="com.example.zadanierek.ui.home.HomeFragment"
         android:label="MainFragment" />
 </navigation>

@@ -1,9 +1,11 @@
 package com.example.zadanierek.di
 
-import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import com.example.zadanierek.data.repository.ApiRepository
 import com.example.zadanierek.data.repository.ApiRepositoryDaily
 import com.example.zadanierek.infrastructure.common.Constants
+import com.example.zadanierek.infrastructure.db.RoomDb
 import com.example.zadanierek.infrastructure.remote.Api
 import com.example.zadanierek.infrastructure.remote.ApiSecond
 import com.example.zadanierek.infrastructure.remote.implementation.ApiRepositoryDailyImpl
@@ -11,11 +13,11 @@ import com.example.zadanierek.infrastructure.remote.implementation.ApiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -60,4 +62,18 @@ class App {
     fun provideDailyRepository(api: ApiSecond): ApiRepositoryDaily {
         return ApiRepositoryDailyImpl(api)
     }
+
+    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationCompenent (i.e. everywhere in the application)
+    @Provides
+    fun provideYourDatabase(
+        @ApplicationContext app: Context
+    ) = Room.databaseBuilder(
+        app,
+        RoomDb::class.java,
+        "database"
+    ).build()
+
+    @Singleton
+    @Provides
+    fun provideYourDao(db: RoomDb) = db.userDao()
 }

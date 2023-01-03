@@ -1,7 +1,6 @@
 package com.example.zadanierek.infrastructure.remote
 
-import com.example.zadanierek.infrastructure.model.dao.UserPackRemoteDaily
-import com.example.zadanierek.infrastructure.model.dao.UserRemoteItemDaily
+import com.example.zadanierek.infrastructure.model.remote.UserPackRemoteDaily
 import retrofit2.Response
 import retrofit2.http.GET
 
