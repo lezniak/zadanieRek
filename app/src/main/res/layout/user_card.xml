@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
@@ -19,7 +20,8 @@
                 android:id="@+id/nameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_below="@+id/apiLinkText"
+                android:layout_alignParentEnd="true"
                 android:text="NickName" />
 
             <TextView
@@ -28,6 +30,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="www.api.pl" />
+
+            <ImageView
+                android:id="@+id/avatarImage"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                tools:srcCompat="@tools:sample/avatars" />
         </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

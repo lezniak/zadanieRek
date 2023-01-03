@@ -37,7 +37,7 @@ class HomeFragment : Fragment(),AdapterInterface {
     }
 
     private fun setupRecycleView(list: List<User>) {
-        binding.recycleView.adapter = UserListAdapter(list,this)
+        binding.recycleView.adapter = UserListAdapter(list,this, requireContext())
         binding.recycleView.layoutManager = LinearLayoutManager(requireContext())
     }
 
