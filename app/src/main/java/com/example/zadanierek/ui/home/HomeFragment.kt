@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zadanierek.databinding.FragmentMainBinding
+import com.example.zadanierek.infrastructure.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),AdapterInterface {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: HomeViewModel by viewModels()
@@ -29,7 +32,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.allUsersFromDb.observe(viewLifecycleOwner){
-            Log.d("FRAGMENT",it.toString())
+            setupRecycleView(it)
         }
+    }
+
+    private fun setupRecycleView(list: List<User>) {
+        binding.recycleView.adapter = UserListAdapter(list)
+        binding.recycleView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onClick(item: User) {
+        findNavController()
     }
 }
