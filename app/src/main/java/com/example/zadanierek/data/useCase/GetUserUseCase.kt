@@ -11,8 +11,11 @@ import com.example.zadanierek.infrastructure.model.remote.toUser
 import com.example.zadanierek.infrastructure.model.remote.toUserList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.delayFlow
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 const val TAG = "GET_USER_USE_CASE"
@@ -20,6 +23,6 @@ class GetUserUseCase @Inject constructor(private val apiRepository: ApiRepositor
                                          private val apiRepositoryDaily: ApiRepositoryDaily,
                                          private val roomDb: RoomDb) {
     private var userDao: UserDao = roomDb.userDao()
-    var usersList = userDao.getAllUsers()
+    var usersList = userDao.getAllUsers().onStart { delay(2000) }
 
 }

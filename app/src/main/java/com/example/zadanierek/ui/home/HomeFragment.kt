@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zadanierek.databinding.FragmentMainBinding
+import com.example.zadanierek.infrastructure.common.hide
 import com.example.zadanierek.infrastructure.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +33,7 @@ class HomeFragment : Fragment(),AdapterInterface {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.allUsersFromDb.observe(viewLifecycleOwner){
+            binding.simpleProgressBar.hide()
             setupRecycleView(it)
         }
     }
