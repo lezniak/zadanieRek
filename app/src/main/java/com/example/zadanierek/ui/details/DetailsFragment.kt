@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.zadanierek.databinding.FragmentDetailsBinding
 import com.example.zadanierek.infrastructure.common.Constants
-import com.example.zadanierek.ui.home.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailsFragment :  Fragment() {
-    private val viewModel: DetailsViewModel by viewModels()
     private lateinit var binding : FragmentDetailsBinding
     private val args: DetailsFragmentArgs by navArgs()
     override fun onCreateView(
@@ -40,7 +36,7 @@ class DetailsFragment :  Fragment() {
             if (linkToPhoto != "Brak"){
 //                val img = viewModel.getImage(linkToPhoto).await()
 //                binding.imageView.setImageBitmap(img)
-                Picasso.get().load(linkToPhoto).into(binding.imageView);
+                Picasso.get().load(linkToPhoto).into(binding.imageView)
             }
 
             binding.apiLinkText.apply {

@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class GetRemoteUserUseCase @Inject  constructor(private val apiRepository: ApiRepository,
                            private val apiRepositoryDaily: ApiRepositoryDaily,
-                           private val roomDb: RoomDb
+                           roomDb: RoomDb
 ) {
     private var userDao: UserDao = roomDb.userDao()
     operator fun invoke(){
